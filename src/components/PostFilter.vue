@@ -18,8 +18,8 @@ const props = defineProps(['filterText'])
 
 const emit = defineEmits(['update:filterText'])
 
-const updateFilterText = (event) => {
-  emit('update:filterText', event.target.value)
+const updateFilterText = (event: Event) => {
+  emit('update:filterText', (event.target as HTMLInputElement).value)
 }
 </script>
 
