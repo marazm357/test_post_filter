@@ -2,24 +2,21 @@
   <div class="filterContainer">
     <div class="filterInput">
       <img class="img" src="/src/assets/lupa.png" alt="lupa" width="18px" height="18px" />
-      <input
-        class="input"
-        type="text"
-        placeholder="filter by author..."
-        :value="props.filterText"
-        @input="updateFilterText"
-      />
+      <input class="input" type="text" placeholder="filter by author..." v-model="filterText"
+        @input="updateFilterText" />
     </div>
   </div>
 </template>
 
 <script setup lang="ts">
-const props = defineProps(['filterText'])
+const filterText = defineModel()
+
+// const props = defineProps(['filterText'])
 
 const emit = defineEmits(['update:filterText'])
 
-const updateFilterText = (event: Event) => {
-  emit('update:filterText', (event.target as HTMLInputElement).value)
+const updateFilterText = () => {
+  emit('update:filterText', filterText.value)
 }
 </script>
 
@@ -30,6 +27,7 @@ const updateFilterText = (event: Event) => {
   justify-content: center;
   align-items: center;
 }
+
 .filterInput {
   display: flex;
   background-color: white;

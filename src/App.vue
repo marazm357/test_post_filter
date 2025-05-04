@@ -16,7 +16,6 @@ const fetchPostsAndCreators = async () => {
     if (!creatorRes.ok) throw new Error(`Ошибка при загрузке авторов: ${creatorRes.status}`)
     const creatorData = await creatorRes.json()
 
-    // Проверяем, есть ли данные
     if (!postData.length || !creatorData.length) {
       throw new Error('Получены пустые данные')
     }
